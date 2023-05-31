@@ -1,5 +1,6 @@
 <template>
-    <div style="max-width: 500px;" class="card mx-auto mt-5">
+    <div style="max-width: 500px;" class="card mx-auto mt-5 relative">
+        <Loader v-if="loading"/>
         <h1 class="text-xl text-center">Login</h1>
         <div>
             <form @submit.prevent="submitForm()" class="flex flex-col gap-5">
@@ -26,6 +27,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
+import Loader from '@/js/utils/Loader.vue'
 export default {
     data() {
         return {
@@ -37,6 +39,7 @@ export default {
             error: false
         }
     },
+    components: { Loader },
     methods: {
         async submitForm() {
             this.loading = true

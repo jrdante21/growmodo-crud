@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="relative">
+        <Loader v-if="loading"/>
         <div class="flex flex-col md:flex-row gap-5 justify-between py-4 items-center">
             <div class="flex-1">Welcome, {{ user?.username }}</div>
 
@@ -92,7 +93,8 @@
     </div>
 </template>
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex"
+import Loader from '@/js/utils/Loader.vue'
 export default {
     data() {
         return {
@@ -101,6 +103,7 @@ export default {
             loading: false
         }
     },
+    components: { Loader },
     methods:{
         ...mapActions({
             signout: 'auth/logout'

@@ -1,5 +1,6 @@
 <template>
-    <div style="max-width: 500px;" class="card mx-auto mt-5">
+    <div style="max-width: 500px;" class="card mx-auto mt-5 relative">
+        <Loader v-if="loading"/>
         <h1 class="text-xl text-center">Register</h1>
         <form v-if="!success" @submit.prevent="submitForm()" class="flex flex-col gap-5">
             <div>
@@ -49,6 +50,7 @@
     </div>
 </template>
 <script>
+import Loader from '@/js/utils/Loader.vue'
 export default {
     data() {
         return {
@@ -64,6 +66,7 @@ export default {
             success: false
         }
     },
+    components: { Loader },
     methods: {
         async submitForm() {
             this.loading = true
